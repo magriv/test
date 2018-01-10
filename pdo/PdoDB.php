@@ -103,7 +103,6 @@ class PdoDB implements DBInterface
 
     public function executeQuery($query, array $params = [], array $types = [])
     {
-//        try {
         if ($params) {
             //list($query, $params, $types) = SQLParserUtils::expandListParameters($query, $params, $types);
 
@@ -117,10 +116,6 @@ class PdoDB implements DBInterface
         } else {
             $stmt = $this->conn->query($query);
         }
-//        } catch (\Exception $ex) {
-        //throw DBALException::driverExceptionDuringQuery($this->_driver, $ex, $query, $this->resolveParams($params, $types));
-
-//        }
 
         return $stmt;
     }
@@ -223,7 +218,6 @@ class PdoDB implements DBInterface
             }
         } catch (\Exception $ex) {
             throw new \Exception($ex->getMessage() . "Query: {$query}" . (empty($params) ? "" : " Params: " . json_encode($params)));
-            //throw DBALException::driverExceptionDuringQuery($this->_driver, $ex, $query, $this->resolveParams($params, $types));
         }
 
         return $result;
